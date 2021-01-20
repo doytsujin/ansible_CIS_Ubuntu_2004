@@ -2,4 +2,4 @@
 - hosts: localhost
   remote_user: root
   roles:
-    - CIS-Ubuntu-20.04-Ansible
+    - "{{ lookup('env', 'MOLECULE_PROJECT_DIRECTORY') | basename }}"
