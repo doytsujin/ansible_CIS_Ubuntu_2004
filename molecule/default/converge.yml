@@ -2,6 +2,14 @@
 - name: Converge
   hosts: all
   tasks:
+    - name: Update apt Packages
+      apt:
+        update_cache: true
+    - name: Install apt Packages
+      apt:
+        name: "{{ item }}"
+      loop:
+        - kmod
     - name: "Include ansible_CIS_Ubuntu_2004"
       include_role:
         name: "{{ lookup('env', 'MOLECULE_PROJECT_DIRECTORY') | basename }}"

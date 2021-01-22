@@ -24,3 +24,5 @@ galaxy_info:
       automation,
     ]
 dependencies: []
+collections:
+  - community.general
