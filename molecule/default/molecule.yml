@@ -2,11 +2,13 @@
 dependency:
   name: galaxy
 driver:
-  name: docker
+  name: vagrant
 platforms:
   - name: instance
-    image: geerlingguy/docker-ubuntu2004-ansible
-    pre_build_image: true
+    box: geerlingguy/ubuntu2004
+    box_version: 1.0.2
+    memory: 1024
+    cpu: 1
 provisioner:
   name: ansible
 verifier:
