@@ -551,11 +551,17 @@
         name: ["nullmailer", "aide-common", "aide"]
         state: present
         install_recommends: false
+    - name: check if aide.db exists
+      stat:
+        path: /var/lib/aide/aide.db
+      register: aide_db_stat_result
     - name: Configure AIDE as appropriate for your environment | aideinit
-      command: aideinit
+      command: aideinit --force
+      when: not aide_db_stat_result.stat.exists
     - name: Configure AIDE as appropriate for your environment | aideinit db
       shell: |
         mv /var/lib/aide/aide.db.new /var/lib/aide/aide.db
+      when: not aide_db_stat_result.stat.exists
   tags:
     - section1
     - level_1_server
