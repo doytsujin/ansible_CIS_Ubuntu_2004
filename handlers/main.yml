@@ -4,29 +4,37 @@
 #Grub
 - name: grub restart
   command: update-grub
+  become: true
 - name: journald restart
   service:
     name: systemd-journald
     state: restarted
+  become: true
 - name: auditd restart
   service:
     name: auditd
     state: restarted
+  become: true
 - name: audit rules load
   shell: /sbin/augenrules --load && true || true
+  become: true
 - name: sshd restart
   service:
     name: sshd
     state: restarted
+  become: true
 - name: rsyslog restart
   service:
     name: rsyslog
     state: restarted
+  become: true
 - name: RestartChronyservice
   service:
     name: "chrony"
     state: restarted
+  become: true
 - name:  reloadTimesyncd
   service:
     name:  systemd-timesyncd
     state: restarted
+  become: true

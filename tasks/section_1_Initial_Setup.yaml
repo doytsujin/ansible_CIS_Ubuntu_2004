@@ -489,6 +489,7 @@
   apt:
     name: sudo
     state: present
+    update_cache: true
     install_recommends: false
   tags:
     - section1
@@ -773,6 +774,7 @@
     - name: 1.6.4 Ensure core dumps are restricted | apt
       apt:
         name: systemd-coredump
+        update_cache: true
         state: present
     - name: 1.6.4 Ensure core dumps are restricted | coredump.conf
       lineinfile:
